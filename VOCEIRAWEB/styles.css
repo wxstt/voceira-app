@@ -276,6 +276,24 @@ a {
   font-size: 1.1rem;
   color: var(--text-muted);
   margin-bottom: 2rem;
+  min-height: 1.7em;
+}
+.hero-subtitle::after {
+  content: '';
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--primary);
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blink-cursor 0.8s step-end infinite;
+}
+.hero-subtitle.typing-done::after {
+  display: none;
+}
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 .hero-buttons {
   display: flex;
