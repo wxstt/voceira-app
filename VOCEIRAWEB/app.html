@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voceira App - Panel de Control</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="app-body">
+
+  <header class="navbar app-header">
+    <div class="nav-container">
+      <a href="app.html" class="logo">
+        <span class="logo-icon">🎙️</span>
+        <span class="logo-text">Voceira <span class="badge-app">PRO</span></span>
+      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">☀️</button>
+        <a href="index.html" class="btn btn-outline btn-sm" id="btn-logout">Cerrar Sesión</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="app-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="user-card">
+        <div class="avatar" id="user-avatar">US</div>
+        <div class="user-details">
+          <h4 id="user-name">Usuario</h4>
+          <span id="user-plan-text">Plan Activo</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <button class="sidebar-btn active" data-panel="panel-traductor">
+          <span>🌐</span> Traductor IA
+        </button>
+        <button class="sidebar-btn" data-panel="panel-proyectos">
+          <span>📊</span> Mis Proyectos
+        </button>
+        <button class="sidebar-btn" data-panel="panel-ajustes">
+          <span>⚙️</span> Ajustes
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="app-content">
+      
+      <!-- Panel Traductor -->
+      <section id="panel-traductor" class="app-panel active-panel">
+        <div class="panel-header">
+          <h2>Traducción Neuronal</h2>
+          <p>Selecciona los idiomas e ingresa tu texto para procesarlo en tiempo real.</p>
+        </div>
+
+        <div class="translator-card">
+          <div class="translator-toolbar">
+            <select id="lang-from" class="select-box">
+              <option value="es">Español</option>
+              <option value="en">Inglés</option>
+            </select>
+            <button class="btn-swap" id="btn-swap" title="Intercambiar idiomas">⇄</button>
+            <select id="lang-to" class="select-box">
+              <option value="en">Inglés</option>
+              <option value="es">Español</option>
+            </select>
+          </div>
+
+          <div class="translator-grid">
+            <div class="text-box">
+              <textarea id="translate-input" placeholder="Escribe o pega el texto aquí..."></textarea>
+              <div class="box-footer">
+                <span class="char-count" id="char-count">0 caracteres</span>
+                <button class="btn btn-primary" id="btn-translate">Traducir Ahora</button>
+              </div>
+            </div>
+
+            <div class="text-box output-box">
+              <textarea id="translate-output" readonly placeholder="La traducción aparecerá aquí..."></textarea>
+              <div class="box-footer">
+                <span class="status-tag" id="status-tag">Listo</span>
+                <button class="btn btn-secondary" id="btn-save">Guardar Proyecto</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel Proyectos -->
+      <section id="panel-proyectos" class="app-panel">
+        <div class="panel-header">
+          <h2>Historial de Proyectos</h2>
+          <p>Tus traducciones recientes guardadas en la nube.</p>
+        </div>
+        <div class="table-card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Nombre del Proyecto</th>
+                <th>Idiomas</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+              </tr>
+            </thead>
+            <tbody id="projects-list">
+              <tr>
+                <td>Documento Comercial V2</td>
+                <td>ES ➔ EN</td>
+                <td>Hoy, 10:42 AM</td>
+                <td><span class="badge-status success">Completado</span></td>
+              </tr>
+              <tr>
+                <td>Presentación para Cliente</td>
+                <td>EN ➔ FR</td>
+                <td>Ayer, 04:15 PM</td>
+                <td><span class="badge-status success">Completado</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Panel Ajustes -->
+      <section id="panel-ajustes" class="app-panel">
+        <div class="panel-header">
+          <h2>Configuración de la Cuenta y Planes</h2>
+        </div>
+        <div class="settings-card">
+          <h3>Gestionar Suscripción</h3>
+          <p>Actualiza tu plan para desbloquear más idiomas en el motor.</p>
+          <div class="btn-group-row">
+            <button class="btn btn-secondary" id="btn-upgrade-basico">Cambiar a Plan Básico ($9.99 / 20 Idiomas)</button>
+            <button class="btn btn-primary" id="btn-upgrade-premium">Cambiar a Plan Premium ($15.99 / 50 Idiomas)</button>
+          </div>
+        </div>
+        <div class="settings-card danger-zone">
+          <h3>Zona de Peligro</h3>
+          <p>Reiniciar los datos borrará el usuario guardado localmente.</p>
+          <button class="btn btn-outline btn-danger" id="btn-reset">Borrar Cache y Reiniciar</button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

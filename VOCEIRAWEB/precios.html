@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precios - Voceira</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar fija -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo" id="logo-btn">
+        <span class="logo-icon">🎙️</span>
+        <span class="logo-text">Voceira</span>
+      </a>
+      <nav class="nav-links" id="landing-nav">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="index.html#como-funciona" class="nav-link">Cómo Funciona</a>
+        <a href="index.html#caracteristicas" class="nav-link">Características</a>
+        <a href="precios.html" class="nav-link">Precios</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" title="Cambiar modo claro/oscuro">
+          <span class="sun-icon">☀️</span>
+          <span class="moon-icon">🌙</span>
+        </button>
+        <div id="auth-actions">
+          <button class="btn btn-secondary" id="open-auth-btn">Acceder</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN DE PRECIOS EXCLUSIVA -->
+  <main style="margin-top: 120px; min-height: 70vh; padding: 40px 20px; max-width: 1200px; margin-left: auto; margin-right: auto;">
+    <div class="section-header fade-in">
+      <h2>Planes y Precios</h2>
+      <p>Elige el plan que mejor se adapte a tus necesidades de traducción.</p>
+    </div>
+    <div class="pricing-grid" style="max-width: 800px; margin: 0 auto;">
+      
+      <!-- PLAN BÁSICA -->
+      <div class="pricing-card fade-in">
+        <h3>Básica</h3>
+        <div class="price">$9.99 <span>/ mes</span></div>
+        <p>Ideal para creadores que inician.</p>
+        <ul>
+          <li>✓ Traductor con <strong>20 idiomas</strong></li>
+          <li>✓ Hasta 20 proyectos guardados</li>
+          <li>✓ Traducción en tiempo real</li>
+          <li>✓ Soporte estándar</li>
+        </ul>
+        <button class="btn btn-outline btn-full open-register-trigger">Elegir Básica</button>
+      </div>
+
+      <!-- PLAN PREMIUM -->
+      <div class="pricing-card featured fade-in">
+        <span class="popular-tag">Recomendado</span>
+        <h3>Premium</h3>
+        <div class="price">$15.99 <span>/ mes</span></div>
+        <p>Para profesionales sin límites.</p>
+        <ul>
+          <li>✓ Traductor global con <strong>50 idiomas</strong></li>
+          <li>✓ Proyectos y almacenamiento ilimitado</li>
+          <li>✓ Exportación con 1 clic</li>
+          <li>✓ Soporte prioritario 24/7</li>
+        </ul>
+        <button class="btn btn-primary btn-full open-register-trigger">Elegir Premium</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-bottom" style="border-top: none; padding-top: 20px;">
+      <p>© 2026 Voceira App. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Modal Auth (Necesario para que el botón de registro funcione aquí) -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-content fade-in">
+      <button class="close-modal" id="close-modal">&times;</button>
+      <div class="auth-tabs">
+        <button class="tab-btn active" id="tab-login">Ingresar</button>
+        <button class="tab-btn" id="tab-register">Crear Cuenta</button>
+      </div>
+      <form id="login-form" class="auth-form active-form">
+        <h2>Bienvenido</h2>
+        <div class="input-group"><label>Correo</label><input type="email" id="login-email" required></div>
+        <button type="submit" class="btn btn-primary btn-full">Entrar</button>
+      </form>
+      <form id="register-form" class="auth-form">
+        <h2>Comienza Ahora</h2>
+        <div class="input-group"><label>Nombre</label><input type="text" id="reg-name" required></div>
+        <div class="input-group"><label>Correo</label><input type="email" id="reg-email" required></div>
+        <button type="submit" class="btn btn-primary btn-full">Crear Cuenta</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

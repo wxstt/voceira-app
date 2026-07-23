@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voceira - Plataforma de Traducción IA</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-icon">🎙️</span>
+        <span class="logo-text">Voceira</span>
+      </a>
+
+      <!-- Menú Hamburguesa Móvil -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Enlaces de Navegación -->
+      <nav class="nav-links" id="nav-menu">
+        <a href="#inicio" class="nav-link">Inicio</a>
+        <a href="#como-funciona" class="nav-link">Cómo Funciona</a>
+        <a href="#caracteristicas" class="nav-link">Características</a>
+        <a href="#precios" class="nav-link">Precios</a>
+        
+        <div class="nav-mobile-actions">
+          <button class="theme-toggle" title="Cambiar tema">☀️</button>
+          <button class="btn btn-secondary open-auth-btn">Acceder / Registro</button>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" title="Cambiar tema">☀️</button>
+        <button class="btn btn-secondary open-auth-btn">Acceder / Registro</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="inicio" class="hero-section">
+      <div class="hero-content">
+        <span class="badge">✨ Nuevo: Motor Neuronal 2.0</span>
+        <h1>Rompe las barreras del idioma con <span class="gradient-text">Voceira</span></h1>
+        <p class="hero-subtitle">
+          Traduce textos al instante con precisión contextual. Diseñado para creadores de contenido, profesionales y empresas globales.
+        </p>
+        <div class="hero-buttons">
+          <button class="btn btn-primary btn-large open-auth-btn">Comienza Gratis Ahora</button>
+          <a href="#como-funciona" class="btn btn-outline btn-large">Ver Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section id="como-funciona" class="section-padding">
+      <div class="section-header">
+        <h2>Un flujo de trabajo sin fricciones</h2>
+        <p>En tan solo tres pasos obtendrás traducciones con nivel profesional.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">01</div>
+          <h3>Ingresa tu contenido</h3>
+          <p>Escribe o pega el texto que deseas traducir en nuestro panel optimizado.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">02</div>
+          <h3>Procesamiento IA</h3>
+          <p>La IA neuronal analiza el contexto y modismos para mayor precisión.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">03</div>
+          <h3>Exporta o Guarda</h3>
+          <p>Organiza tus proyectos en carpetas y expórtalos en múltiples formatos.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARACTERÍSTICAS -->
+    <section id="caracteristicas" class="section-padding bg-alt">
+      <div class="section-header">
+        <h2>Herramientas de Nivel Profesional</h2>
+        <p>Todo lo necesario para llevar tu contenido a una audiencia global.</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>+50 Idiomas</h3>
+          <p>Traducción precisa adaptada al contexto cultural y léxico de cada país.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Velocidad Ultrarrápida</h3>
+          <p>Respuestas en milisegundos sin latencia ni tiempos de espera.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📂</div>
+          <h3>Gestor de Proyectos</h3>
+          <p>Almacena e imparte seguimiento a tus textos en un solo panel organizado.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌙</div>
+          <h3>Modo Oscuro Elegante</h3>
+          <p>Diseñado para reducir la fatiga visual durante largas sesiones de trabajo.</p>
+        </div>
+      </div>
+    </section>
+
+   <!-- ========================================== -->
+<!-- SECCIÓN DE PRECIOS (2 PLANES) -->
+<!-- ========================================== -->
+<section id="pricing" class="pricing-section">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2>Elige tu Plan</h2>
+      <p>Traducción neuronal de máxima precisión en tiempo real.</p>
+    </div>
+
+    <!-- Contenedor de las 2 tarjetas -->
+    <div class="pricing-cards-container">
+      
+      <!-- TARJETA 1: PLAN BÁSICO -->
+      <div class="pricing-card">
+        <h3>Básico</h3>
+        <div class="price">$9.99<span>/mes</span></div>
+        <p class="pricing-subtitle">Para usuarios frecuentes y profesionales.</p>
+        
+        <ul class="pricing-features">
+          <li>✅ Acceso a <strong>20 Idiomas</strong></li>
+          <li>✅ Traducción neuronal de alta calidad</li>
+          <li>✅ Interfaz sin publicidad</li>
+          <li>✅ Soporte estándar</li>
+        </ul>
+        <button class="btn btn-primary open-auth-btn">Comenzar Ahora</button>
+      </div>
+
+      <!-- TARJETA 2: PLAN PREMIUM -->
+      <div class="pricing-card premium">
+        <div class="badge-popular">MÁS POPULAR</div>
+        <h3>Premium</h3>
+        <div class="price">$15.99<span>/mes</span></div>
+        <p class="pricing-subtitle">Sin límites, para viajeros y empresas.</p>
+        
+        <ul class="pricing-features">
+          <li>⭐ Acceso a <strong>50 Idiomas</strong> globales</li>
+          <li>⭐ Traducción neuronal de alta calidad</li>
+          <li>⭐ Interfaz sin publicidad</li>
+          <li>⭐ Soporte prioritario 24/7</li>
+        </ul>
+        <button class="btn btn-primary open-auth-btn">Obtener Premium</button>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="logo"><span class="logo-icon">🎙️</span> Voceira</div>
+          <p>Llevando tu voz e historias a cualquier rincón del mundo.</p>
+        </div>
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <a href="#inicio">Inicio</a>
+          <a href="#como-funciona">Cómo Funciona</a>
+          <a href="#caracteristicas">Características</a>
+          <a href="#precios">Precios</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Voceira Inc. Todos los derechos reservados.</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- MODAL DE AUTENTICACIÓN -->
+  <div class="modal-overlay" id="auth-modal">
+    <div class="modal-card">
+      <button class="close-modal" id="close-modal">&times;</button>
+      <div class="auth-tabs">
+        <button class="tab-btn active" id="tab-login">Iniciar Sesión</button>
+        <button class="tab-btn" id="tab-register">Crear Cuenta</button>
+      </div>
+
+      <!-- Login -->
+      <form id="login-form" class="auth-form active-form">
+        <h2>Bienvenido de nuevo</h2>
+        <p class="auth-desc">Ingresa a tu cuenta para acceder al traductor.</p>
+        <div class="input-group">
+          <label>Correo Electrónico</label>
+          <input type="email" id="login-email" placeholder="usuario@correo.com" required>
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input type="password" id="login-pass" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Ingresar a la App ➔</button>
+      </form>
+
+      <!-- Register -->
+      <form id="register-form" class="auth-form">
+        <h2>Crea tu cuenta gratis</h2>
+        <p class="auth-desc">Comienza tu prueba sin tarjeta de crédito.</p>
+        <div class="input-group">
+          <label>Nombre Completo</label>
+          <input type="text" id="register-name" placeholder="Ej: Maria López" required>
+        </div>
+        <div class="input-group">
+          <label>Correo Electrónico</label>
+          <input type="email" id="register-email" placeholder="usuario@correo.com" required>
+        </div>
+        <div class="input-group">
+          <label>Contraseña (mínimo 6 caracteres)</label>
+          <input type="password" id="register-pass" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-full">Registrarme e Ir a la App ➔</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
