@@ -70,6 +70,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // 1.b SCROLLSPY: resalta el link del nav según la sección visible
+  const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+  if (navLinks.length > 0) {
+    const sections = Array.from(navLinks)
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
+
+    if (sections.length > 0 && 'IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            navLinks.forEach(link => {
+              link.classList.toggle('active-link', link.getAttribute('href') === `#${id}`);
+            });
+          }
+        });
+      }, { rootMargin: '-40% 0px -55% 0px', threshold: 0 });
+
+      sections.forEach(section => observer.observe(section));
+    }
+  }
+
   // 2. MODO OSCURO / CLARO
   const themeToggles = document.querySelectorAll('.theme-toggle');
   themeToggles.forEach(toggle => {
