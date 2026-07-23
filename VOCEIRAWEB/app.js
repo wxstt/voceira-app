@@ -311,6 +311,139 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // ==========================================
+  // --- SIMULACIÓN DE LLAMADA EN VIVO (app.html) ---
+  // ==========================================
+  const callTranscript = document.getElementById('call-transcript');
+  const btnStartCall = document.getElementById('btn-start-call');
+  const btnResetCall = document.getElementById('btn-reset-call');
+  const callStatusText = document.getElementById('call-status-text');
+  const callTimerEl = document.getElementById('call-timer');
+  const callDot = document.getElementById('call-dot');
+  const micWaveA = document.getElementById('mic-wave-a');
+  const micWaveB = document.getElementById('mic-wave-b');
+  const callEmptyHint = document.getElementById('call-empty-hint');
+
+  if (callTranscript && btnStartCall) {
+    const guionLlamada = [
+      { speaker: 'a', name: 'Ana', flag: '🇪🇸', original: 'Hola John, ¿cómo va todo con el proyecto?', traducido: 'Hi John, how\'s everything going with the project?' },
+      { speaker: 'b', name: 'John', flag: '🇺🇸', original: 'Hey Ana! It\'s going great, we just finished the first version.', traducido: '¡Hola Ana! Va genial, acabamos de terminar la primera versión.' },
+      { speaker: 'a', name: 'Ana', flag: '🇪🇸', original: '¡Qué buena noticia! ¿Podemos revisarlo mañana?', traducido: 'That\'s great news! Can we review it tomorrow?' },
+      { speaker: 'b', name: 'John', flag: '🇺🇸', original: 'Sure, let\'s do it at 10 AM, does that work for you?', traducido: 'Claro, hagámoslo a las 10 AM, ¿te funciona?' }
+    ];
+
+    let callInterval = null;
+    let callSeconds = 0;
+    let simulacionActiva = false;
+
+    function formatearTiempo(segundos) {
+      const m = String(Math.floor(segundos / 60)).padStart(2, '0');
+      const s = String(segundos % 60).padStart(2, '0');
+      return `${m}:${s}`;
+    }
+
+    function activarMic(speaker) {
+      micWaveA.classList.toggle('active', speaker === 'a');
+      micWaveB.classList.toggle('active', speaker === 'b');
+    }
+
+    function apagarMics() {
+      micWaveA.classList.remove('active');
+      micWaveB.classList.remove('active');
+    }
+
+    function escribirEnElemento(elemento, texto, velocidad, callback) {
+      let i = 0;
+      elemento.textContent = '';
+      elemento.classList.add('typing-cursor');
+      (function paso() {
+        if (i < texto.length) {
+          elemento.textContent += texto.charAt(i);
+          i++;
+          setTimeout(paso, velocidad);
+        } else {
+          elemento.classList.remove('typing-cursor');
+          if (callback) callback();
+        }
+      })();
+    }
+
+    function reproducirLinea(idx) {
+      if (!simulacionActiva) return;
+
+      if (idx >= guionLlamada.length) {
+        callStatusText.textContent = 'Llamada finalizada';
+        callDot.classList.remove('live');
+        apagarMics();
+        clearInterval(callInterval);
+        simulacionActiva = false;
+        btnStartCall.disabled = false;
+        btnStartCall.textContent = '▶ Iniciar Simulación';
+        return;
+      }
+
+      const linea = guionLlamada[idx];
+      activarMic(linea.speaker);
+
+      const bubble = document.createElement('div');
+      bubble.className = `call-bubble ${linea.speaker === 'a' ? 'bubble-left' : 'bubble-right'}`;
+      bubble.innerHTML = `
+        <div class="bubble-header">${linea.name} <span>${linea.flag}</span></div>
+        <p class="bubble-original"></p>
+        <p class="bubble-translated"></p>
+      `;
+      callTranscript.appendChild(bubble);
+      callTranscript.scrollTop = callTranscript.scrollHeight;
+
+      const originalEl = bubble.querySelector('.bubble-original');
+      const traducidoEl = bubble.querySelector('.bubble-translated');
+
+      escribirEnElemento(originalEl, linea.original, 28, () => {
+        setTimeout(() => {
+          traducidoEl.textContent = '🌐 ';
+          const spanTraducido = document.createElement('span');
+          traducidoEl.appendChild(spanTraducido);
+          escribirEnElemento(spanTraducido, linea.traducido, 20, () => {
+            callTranscript.scrollTop = callTranscript.scrollHeight;
+            setTimeout(() => reproducirLinea(idx + 1), 900);
+          });
+        }, 300);
+      });
+    }
+
+    btnStartCall.addEventListener('click', () => {
+      if (simulacionActiva) return;
+      simulacionActiva = true;
+      btnStartCall.disabled = true;
+      btnStartCall.textContent = 'Simulación en curso...';
+      callTranscript.innerHTML = '';
+      callStatusText.textContent = 'Llamada en curso';
+      callDot.classList.add('live');
+      callSeconds = 0;
+      callTimerEl.textContent = '00:00';
+      clearInterval(callInterval);
+      callInterval = setInterval(() => {
+        callSeconds++;
+        callTimerEl.textContent = formatearTiempo(callSeconds);
+      }, 1000);
+      reproducirLinea(0);
+    });
+
+    btnResetCall.addEventListener('click', () => {
+      simulacionActiva = false;
+      clearInterval(callInterval);
+      callSeconds = 0;
+      callTimerEl.textContent = '00:00';
+      callStatusText.textContent = 'Llamada no iniciada';
+      callDot.classList.remove('live');
+      callTranscript.innerHTML = '';
+      if (callEmptyHint) callTranscript.appendChild(callEmptyHint);
+      apagarMics();
+      btnStartCall.disabled = false;
+      btnStartCall.textContent = '▶ Iniciar Simulación';
+    });
+  }
+
   // Navegación Sidebar de la App
   const sidebarBtns = document.querySelectorAll('.sidebar-btn');
   const panels = document.querySelectorAll('.app-panel');
