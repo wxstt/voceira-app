@@ -36,6 +36,9 @@
         <button class="sidebar-btn active" data-panel="panel-traductor">
           <span>🌐</span> Traductor IA
         </button>
+        <button class="sidebar-btn" data-panel="panel-llamada">
+          <span>📞</span> Demo Llamada
+        </button>
         <button class="sidebar-btn" data-panel="panel-proyectos">
           <span>📊</span> Mis Proyectos
         </button>
@@ -47,7 +50,7 @@
 
     <!-- Main Content Area -->
     <main class="app-content">
-      
+
       <!-- Panel Traductor -->
       <section id="panel-traductor" class="app-panel active-panel">
         <div class="panel-header">
@@ -84,6 +87,52 @@
                 <button class="btn btn-secondary" id="btn-save">Guardar Proyecto</button>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panel Demo Llamada en Vivo -->
+      <section id="panel-llamada" class="app-panel">
+        <div class="panel-header">
+          <h2>Simulación de Llamada en Vivo</h2>
+          <p>Así se ve Voceira traduciendo una conversación en tiempo real, palabra por palabra.</p>
+        </div>
+
+        <div class="call-card">
+          <div class="call-header">
+            <div class="call-status">
+              <span class="call-dot" id="call-dot"></span>
+              <span id="call-status-text">Llamada no iniciada</span>
+            </div>
+            <div class="call-timer" id="call-timer">00:00</div>
+          </div>
+
+          <div class="call-participants">
+            <div class="participant">
+              <div class="participant-avatar">🧑</div>
+              <div class="participant-info">
+                <h4>Ana</h4>
+                <span>Español 🇪🇸</span>
+              </div>
+              <div class="mic-wave" id="mic-wave-a"><span></span><span></span><span></span></div>
+            </div>
+            <div class="participant">
+              <div class="participant-avatar">👨</div>
+              <div class="participant-info">
+                <h4>John</h4>
+                <span>Inglés 🇺🇸</span>
+              </div>
+              <div class="mic-wave" id="mic-wave-b"><span></span><span></span><span></span></div>
+            </div>
+          </div>
+
+          <div class="call-transcript" id="call-transcript">
+            <p class="call-empty-hint" id="call-empty-hint">Presioná "Iniciar Simulación" para ver la traducción en vivo.</p>
+          </div>
+
+          <div class="call-controls">
+            <button class="btn btn-primary" id="btn-start-call">▶ Iniciar Simulación</button>
+            <button class="btn btn-outline" id="btn-reset-call">Reiniciar</button>
           </div>
         </div>
       </section>
