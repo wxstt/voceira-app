@@ -93,6 +93,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // 1.c EFECTO "MÁQUINA DE ESCRIBIR" EN EL SUBTÍTULO DEL HERO
+  const heroSubtitle = document.getElementById('hero-subtitle');
+  if (heroSubtitle) {
+    const textoCompleto = 'Traduce textos al instante con precisión contextual. Diseñado para creadores de contenido, profesionales y empresas globales.';
+    let index = 0;
+    const velocidadEscritura = 25; // milisegundos por letra
+
+    function escribirTexto() {
+      if (index < textoCompleto.length) {
+        heroSubtitle.textContent += textoCompleto.charAt(index);
+        index++;
+        setTimeout(escribirTexto, velocidadEscritura);
+      } else {
+        heroSubtitle.classList.add('typing-done');
+      }
+    }
+
+    setTimeout(escribirTexto, 300); // pequeña pausa antes de empezar
+  }
+
   // 2. MODO OSCURO / CLARO
   const themeToggles = document.querySelectorAll('.theme-toggle');
   themeToggles.forEach(toggle => {
